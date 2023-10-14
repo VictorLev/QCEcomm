@@ -16,11 +16,8 @@ const DashboardPage: React.FC<DashboardPageProps> = async (
         }
     )
     
-    
-    
     return(
         <div>
-            this is a Dashboard
         </div>
     )
 }
