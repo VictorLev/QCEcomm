@@ -2,7 +2,7 @@
 
 Welcome to my Quebec E-Commerce Website! This demo website was made to pratice my full-stack development skills. It is designed to provide a seamless online shopping experience for customers in Australia offering a wide range of products with a focus on serving the unique needs of Quebecois in the Australian market.
 
-## Features
+## :bulb:Features
 
 **Product Catalog**: Browse a diverse selection of products, including foods, fashion, home goods, and more, tailored to the Quebecois in Australia.
 
@@ -65,7 +65,7 @@ The website should now be accessible at **``http://localhost:3000``** by default
 
 - Back-end:
     - Node.js
-    - Express.js
+    - Next.js
     - Prisma (w/ MySQL database)
 
 - User Management & Authentication:
