@@ -1,6 +1,6 @@
 # :large_blue_circle::fleur_de_lis::white_circle: Quebecois products E-commerce Store  
 
-Welcome to my Quebecer E-Commerce Website! This demo website to pratice full-stack development.  is designed to provide a seamless online shopping experience for customers in Quebec, Canada, offering a wide range of products with a focus on serving the unique needs of the Quebecois in the Australian market.
+Welcome to my Quebec E-Commerce Website! This demo website was made to pratice my full-stack development skills. It is designed to provide a seamless online shopping experience for customers in Australia offering a wide range of products with a focus on serving the unique needs of Quebecois in the Australian market.
 
 ## Features
 
@@ -20,7 +20,7 @@ Welcome to my Quebecer E-Commerce Website! This demo website to pratice full-sta
 
 **Admin Dashboard**:  A separate wedsite is made to manage settings, view relavent data and others functinalities.
 
-# :rocket:Getting Started
+## :rocket:Getting Started
 To get started with the Quebecer E-Commerce Website, follow these steps:
 
 1. Clone the repository to your local machine:
@@ -37,7 +37,7 @@ git clone https://github.com/VictorLev/qcecomm.git
 
 1. Start adding your products and customizing the website to your requirements.
 
-# :computer:Installation
+## :computer:Installation
 To install the necessary dependencies, you can use a package manager like npm or yarn. Here's how to do it with npm:
 
 ```bash
@@ -46,7 +46,7 @@ npm install
 
 This will install all the required packages listed in the **``package.json``** file.
 
-# :technologist:Usage
+## :technologist:Usage
 After installing the dependencies and configuring your database, you can start the application using the following command:
 
 ```bash
@@ -55,7 +55,7 @@ npm start
 
 The website should now be accessible at **``http://localhost:3000``** by default. You can access the website in your web browser.
 
-# :robot:Technologies Used
+## :robot:Technologies Used
 - Front-end:
     - HTML,CSS, TypeScript
     - React.js
@@ -75,7 +75,7 @@ The website should now be accessible at **``http://localhost:3000``** by default
     - To come
 
 
-# :hearts:Contributing
+## :hearts:Contributing
 I welcome contributions to the Quebecois E-Commerce Website. If you would like to contribute, please follow these guidelines:
 
 1. Fork the repository and create a new branch for your feature or bug fix.
@@ -83,7 +83,7 @@ I welcome contributions to the Quebecois E-Commerce Website. If you would like t
 1. Test your changes thoroughly.
 1. Submit a pull request to the main repository.
 
-# :book:License
+## :book:License
 This project is licensed under the MIT License.
 
 Feel free to customize and expand this README to provide more specific information about your Quebecer e-commerce website. Additionally, you can include installation instructions, troubleshooting tips, and any other relevant details.
