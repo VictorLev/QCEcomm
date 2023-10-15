@@ -62,6 +62,7 @@ The website should now be accessible at **``http://localhost:3000``** by default
     - Redux (for state management)
     - TailwindCSS (for styling)
     - [shadcn](https://ui.shadcn.com/) (React Components)
+    - [cloudinary](https://cloudinary.com/)
 
 - Back-end:
     - Node.js
