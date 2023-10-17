@@ -1,3 +1,5 @@
+import { format } from "date-fns"
+
 import prismadb from "@/lib/prismadb"
 import { BillboardClient } from "./components/client"
 import { Whisper } from "next/font/google";
@@ -22,13 +24,13 @@ const BillboardsPage = async ( {
     const formattedBillboards: BillboardColumn[] = billboards.map((item) => ({
         id: item.id,
         label: item.label,
-        createAt: item.
+        createAt: format(item.createdAt, "MMMM do, yyy")
     }))
 
     return(
         <div className="flex-col">
             <div className="flex-1 spaxe-y-4 p-8 pt-6">
-                <BillboardClient data={billboards}/>
+                <BillboardClient data={formattedBillboards}/>
             </div>
         </div>
     )
