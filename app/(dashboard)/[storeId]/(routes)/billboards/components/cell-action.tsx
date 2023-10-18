@@ -6,7 +6,7 @@ interface CellActionProps {
     data: BillboardColumn
 }
 
-export const CellAction: FC<CellActionProps> = ({
+export const CellAction: React.FC<CellActionProps> = ({
     data
 }) => {
    return (
