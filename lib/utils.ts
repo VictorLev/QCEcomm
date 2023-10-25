@@ -6,6 +6,6 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const formatter = new Intl.NumberFormat("en-US", {
-  style: 'currrency',
+  style: 'currency',
   currency: 'USD' // Maybe add different currencies
 })
