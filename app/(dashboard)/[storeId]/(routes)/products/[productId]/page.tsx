@@ -4,7 +4,7 @@ import { ProductForm } from "./components/product-forms";
 const ProductPage = async ({
     params
 }: {
-    params: { productId: string }
+    params: { productId: string, storeId:string }
 }) => {
     const product = await prismadb.product.findUnique({
         where: {
@@ -17,19 +17,19 @@ const ProductPage = async ({
 
     const categories = await prismadb.category.findMany({
         where: {
-            storeId : params.productId,
+            storeId : params.storeId,
         }
     })
 
     const sizes = await prismadb.size.findMany({
         where: {
-            storeId : params.productId,
+            storeId : params.storeId,
         }
     })
     
     const colors = await prismadb.color.findMany({
         where: {
-            storeId : params.productId,
+            storeId : params.storeId,
         }
     })
 
