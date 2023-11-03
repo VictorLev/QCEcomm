@@ -42,7 +42,7 @@ export async function PATCH (
         }
 
         if (!images || !images.length) {
-            return new NextResponse("images is required", { status: 400})
+            return new NextResponse("Images are required", { status: 400})
         }
 
         if (!colorId) {

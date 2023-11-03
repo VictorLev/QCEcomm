@@ -11,7 +11,7 @@ export async function POST(
         const { userId } = auth();
         const body = await req.json();
         
-        const { label, imageUrl } = body;
+        const { label, images } = body;
 
 
 
@@ -23,8 +23,8 @@ export async function POST(
             return new NextResponse("Label is required", { status: 400})
         }
 
-        if (!imageUrl) {
-            return new NextResponse("ImageUrl is required", { status: 400})
+        if (!images || !images.length) {
+            return new NextResponse("images is required", { status: 400})
         }
 
         if (!params.storeId) {
@@ -46,7 +46,13 @@ export async function POST(
         const billboard =  await prismadb.billboard.create( {
             data: {
                 label,
-                imageUrl,
+                images: {
+                    createMany: {
+                        data: [
+                            ...images.map((image: { url : string }) => image)
+                        ]
+                    }
+                },
                 storeId : params.storeId
 
             }
@@ -66,17 +72,16 @@ export async function GET(
 ) {
     try {
         
-    
-
         if (!params.storeId) {
             return new NextResponse("Store Id is required", { status: 400})
         }
 
-
-
         const billboards =  await prismadb.billboard.findMany( {
             where: {
                 storeId: params.storeId
+            },
+            include: {
+                images: true
             }
         })
 

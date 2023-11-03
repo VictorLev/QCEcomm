@@ -1,7 +1,7 @@
 "use client"
 
 import * as z from "zod"
-import { Category, Color, Image, Product, Size } from "@prisma/client";
+import { Category, Color, ProductImage, Product, Size } from "@prisma/client";
 import { Heading } from "@/components/ui/heading"
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
@@ -21,7 +21,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 
 interface ProductFormProps {
     initialData: Product & {
-        images: Image[]
+        images: ProductImage[]
     }| null;
     categories: Category[]
     sizes: Size[]

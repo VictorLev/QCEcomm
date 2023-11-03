@@ -11,7 +11,7 @@ export async function PATCH (
         const { userId } = auth()
         const body = await req.json();
         
-        const { label , imageUrl } = body;
+        const { label , images } = body;
 
         if (!userId) {
             return new NextResponse("Unauthorized", { status: 401})
@@ -19,8 +19,8 @@ export async function PATCH (
         if (!label) {
             return new NextResponse("Label is required", { status: 400})
         }
-        if (!imageUrl) {
-            return new NextResponse("Image Url is required", { status: 400})
+        if (!images || !images.length) {
+            return new NextResponse("Images are required", { status: 400})
         }
         if (!params.billboardId) {
             return new NextResponse("billboard Id is required", { status: 400})
@@ -37,13 +37,31 @@ export async function PATCH (
             return new NextResponse("Unauthorized", { status: 403})
         }
 
-        const billboard =  await prismadb.billboard.updateMany( {
+        await prismadb.billboard.update( {
             where: {
                 id: params.billboardId
             },
             data: {
                 label,
-                imageUrl
+                images: {
+                    deleteMany: {}
+                }
+            }
+        });
+
+        const billboard = await prismadb.billboard.update( {
+            where: {
+                id: params.billboardId
+            },
+            data: {
+                label,
+                images: {
+                    createMany: {
+                        data: [
+                            ...images.map((image: { url:string })=> image)
+                        ]
+                    }
+                }
             }
         });
 
@@ -110,6 +128,9 @@ export async function GET (
         const billboard =  await prismadb.billboard.findUnique( {
             where: {
                 id: params.billboardId
+            },
+            include : {
+                images: true
             }
         });
         return NextResponse.json(billboard)
