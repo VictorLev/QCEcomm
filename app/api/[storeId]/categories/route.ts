@@ -11,7 +11,7 @@ export async function POST(
         const { userId } = auth();
         const body = await req.json();
         
-        const { name, billboardId } = body;
+        const { nameEn,nameFr,nameSp, billboardId } = body;
 
 
 
@@ -19,8 +19,14 @@ export async function POST(
             return new NextResponse("Unauthenticated", { status: 401})
         }
 
-        if (!name) {
-            return new NextResponse("name is required", { status: 400})
+        if (!nameEn) {
+            return new NextResponse("name in English is required", { status: 400})
+        }
+        if (!nameFr) {
+            return new NextResponse("name in French is required", { status: 400})
+        }
+        if (!nameSp) {
+            return new NextResponse("name in Spanish is required", { status: 400})
         }
 
         if (!billboardId) {
@@ -45,7 +51,9 @@ export async function POST(
 
         const category =  await prismadb.category.create( {
             data: {
-                name,
+                nameEn,
+                nameFr,
+                nameSp,
                 billboardId,
                 storeId : params.storeId
 

@@ -63,7 +63,9 @@ model Category {
   
   products   Product[] @relation("CategoryToProduct")
 
-  name String
+  nameEn String
+  nameFr String
+  nameSp String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

@@ -11,13 +11,19 @@ export async function PATCH (
         const { userId } = auth()
         const body = await req.json();
         
-        const { name , billboardId } = body;
+        const { nameEn,nameFr,nameSp, billboardId } = body;
 
         if (!userId) {
             return new NextResponse("Unauthorized", { status: 401})
         }
-        if (!name) {
-            return new NextResponse("name is required", { status: 400})
+        if (!nameEn) {
+            return new NextResponse("name in English is required", { status: 400})
+        }
+        if (!nameFr) {
+            return new NextResponse("name in French is required", { status: 400})
+        }
+        if (!nameSp) {
+            return new NextResponse("name in Spanish is required", { status: 400})
         }
         if (!billboardId) {
             return new NextResponse("billboard Id is required", { status: 400})
@@ -42,7 +48,9 @@ export async function PATCH (
                 id: params.categoryId
             },
             data: {
-                name,
+                nameEn,
+                nameFr,
+                nameSp,
                 billboardId
             }
         });

@@ -23,7 +23,9 @@ interface CategoryFormProps {
 }
 
 const formSchema = z.object({
-    name :  z.string().min(1),
+    nameEn :  z.string().min(1),
+    nameFr :  z.string().min(1),
+    nameSp :  z.string().min(1),
     billboardId :  z.string().min(1)
 })
 
@@ -48,7 +50,9 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
     const form = useForm<CategoryFormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: initialData || {
-            name : '',
+            nameEn : '',
+            nameFr : '',
+            nameSp : '',
             billboardId : ''
         }
     })
@@ -117,10 +121,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                     <div className="grid grid-cols-3 gap-8">
                         <FormField 
                             control={form.control}
-                            name="name"
+                            name="nameEn"
                             render={({field}) => (
                                 <FormItem>
-                                    <FormLabel>Name</FormLabel>
+                                    <FormLabel>Name in English (default)</FormLabel>
                                     <FormControl>
                                         <Input disabled={loading} placeholder="Category name" {...field}/>
                                     </FormControl>
@@ -129,6 +133,34 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                             )}
                         />
                         <FormField 
+                            control={form.control}
+                            name="nameFr"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>Name in French</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={loading} placeholder="Category name" {...field}/>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField 
+                            control={form.control}
+                            name="nameSp"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>Name in Spanish</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={loading} placeholder="Category name" {...field}/>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                    </div>
+                    <div className="grid grid-cols-3 gap-8">
+                    <FormField 
                             control={form.control}
                             name="billboardId"
                             render={({field}) => (
@@ -165,8 +197,9 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                                 </FormItem>
                             )}
                         />
-                    </div>
 
+                    </div>
+ 
                     <Button disabled={loading} className="ml-auto" type="submit">
                         {action}
                     </Button>
