@@ -13,7 +13,12 @@ export async function POST(
         const body = await req.json();
         
         const { 
-            name,
+            nameEn,
+            nameFr,
+            nameSp,
+            descriptionEn,
+            descriptionFr,
+            descriptionSp,
             price,
             categoryId,
             sizeId,
@@ -29,10 +34,26 @@ export async function POST(
             return new NextResponse("Unauthenticated", { status: 401})
         }
 
-        if (!name) {
-            return new NextResponse("name is required", { status: 400})
+        if (!nameEn) {
+            return new NextResponse("name in english is required", { status: 400})
         }
 
+        if (!nameFr) {
+            return new NextResponse("name in french is required", { status: 400})
+        }
+        if (!nameSp) {
+            return new NextResponse("name in spanish is required", { status: 400})
+        }
+        if (!descriptionEn) {
+            return new NextResponse("description in english is required", { status: 400})
+        }
+
+        if (!descriptionFr) {
+            return new NextResponse("description in french is required", { status: 400})
+        }
+        if (!descriptionSp) {
+            return new NextResponse("description in spanish is required", { status: 400})
+        }
         if (!price) {
             return new NextResponse("price is required", { status: 400})
         }
@@ -71,7 +92,12 @@ export async function POST(
 
         const product =  await prismadb.product.create( {
             data: {
-                name,
+                nameEn,
+                nameFr,
+                nameSp,
+                descriptionEn,
+                descriptionFr,
+                descriptionSp,
                 price,
                 isArchived,
                 isFeatured,

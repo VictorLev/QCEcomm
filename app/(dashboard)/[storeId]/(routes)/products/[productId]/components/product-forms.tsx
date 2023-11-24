@@ -18,6 +18,7 @@ import { AlertModal } from "@/components/modals/alert-modal";
 import ImageUpload from "@/components/ui/image-upload";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
 
 interface ProductFormProps {
     initialData: Product & {
@@ -29,7 +30,12 @@ interface ProductFormProps {
 }
 
 const formSchema = z.object({
-    name : z.string().min(1),
+    nameEn : z.string().min(1),
+    nameFr : z.string().min(1),
+    nameSp : z.string().min(1),
+    descriptionEn : z.string().min(1),
+    descriptionFr : z.string().min(1),
+    descriptionSp : z.string().min(1),
     images : z.object({  url: z.string()}).array(),
     price: z.coerce.number().min(1),
     categoryId : z.string().min(1),
@@ -65,7 +71,12 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             ...initialData, 
             price: parseFloat(String(initialData?.price))
         } : {
-            name : '',
+            nameEn : '',
+            nameFr : '',
+            nameSp : '',            
+            descriptionEn : '',
+            descriptionFr : '',
+            descriptionSp : '',
             images : [],
             price: 0,
             categoryId : '',
@@ -158,12 +169,89 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                     <div className="grid grid-cols-3 gap-8">
                         <FormField 
                             control={form.control}
-                            name="name"
+                            name="nameEn"
                             render={({field}) => (
                                 <FormItem>
-                                    <FormLabel>Name</FormLabel>
+                                    <FormLabel>Name in English</FormLabel>
                                     <FormControl>
-                                        <Input disabled={loading} placeholder="Product name" {...field}/>
+                                        <Input disabled={loading} placeholder="Product name English" {...field}/>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                         <FormField 
+                            control={form.control}
+                            name="nameFr"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>Name in French</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={loading} placeholder="Product name French" {...field}/>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                         <FormField 
+                            control={form.control}
+                            name="nameSp"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>Name in Spanish</FormLabel>
+                                    <FormControl>
+                                        <Input disabled={loading} placeholder="Product name Spanish" {...field}/>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                                                <FormField 
+                            control={form.control}
+                            name="descriptionEn"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>description in English</FormLabel>
+                                    <FormControl>
+                                        <Textarea disabled={loading}
+                                        placeholder="write a short description in English"
+                                        className="resize-none"
+                                        {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField 
+                            control={form.control}
+                            name="descriptionFr"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>description in French</FormLabel>
+                                    <FormControl>
+                                        <Textarea disabled={loading}
+                                        placeholder="write a short description in French"
+                                        className="resize-none"
+                                        {...field}
+                                        />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField 
+                            control={form.control}
+                            name="descriptionSp"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>description in Spanish</FormLabel>
+                                    <FormControl>
+                                        <Textarea disabled={loading}
+                                        placeholder="write a short description in Spanish"
+                                        className="resize-none"
+                                        {...field}
+                                        />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -209,7 +297,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                                     key={category.id}
                                                     value={category.id}
                                                 >
-                                                    {category.name}
+                                                    {category.nameEn}
                                                 </SelectItem>
                                             ))}
                                         </SelectContent>
@@ -337,6 +425,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                 </FormItem>
                             )}
                         />
+
 
                     </div>
 

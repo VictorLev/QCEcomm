@@ -40,7 +40,7 @@ export async function POST(
             price_data : {
                 currency: 'AUD',
                 product_data: {
-                    name: product.name
+                    name: product.nameEn
                 },
                 unit_amount: product.price.toNumber() * 100
 

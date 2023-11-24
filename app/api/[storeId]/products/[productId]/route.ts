@@ -12,7 +12,9 @@ export async function PATCH (
         const body = await req.json();
         
         const { 
-            name,
+            nameEn,
+            nameFr,
+            nameSp,
             price,
             categoryId,
             sizeId,
@@ -25,8 +27,14 @@ export async function PATCH (
         if (!userId) {
             return new NextResponse("Unauthorized", { status: 401})
         }
-        if (!name) {
-            return new NextResponse("name is required", { status: 400})
+        if (!nameEn) {
+            return new NextResponse("name in english is required", { status: 400})
+        }
+        if (!nameFr) {
+            return new NextResponse("name in french is required", { status: 400})
+        }
+        if (!nameSp) {
+            return new NextResponse("name in spanish is required", { status: 400})
         }
 
         if (!price) {
@@ -68,7 +76,9 @@ export async function PATCH (
                 id: params.productId
             },
             data: {
-                name,
+                nameEn,
+                nameFr,
+                nameSp,
                 price,
                 categoryId,
                 colorId,
@@ -86,7 +96,9 @@ export async function PATCH (
                 id: params.productId
             },
             data: {
-                name,
+                nameEn,
+                nameFr,
+                nameSp,
                 price,
                 categoryId,
                 colorId,
