@@ -337,6 +337,12 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                                     {size.name}
                                                 </SelectItem>
                                             ))}
+                                            <SelectItem
+                                                    key={"null"}
+                                                    value={" "}
+                                                >
+                                                    N/A
+                                            </SelectItem>
                                         </SelectContent>
                                     </Select>
 
@@ -374,6 +380,12 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                                     {color.name}
                                                 </SelectItem>
                                             ))}
+                                            <SelectItem
+                                                    key={"null"}
+                                                    value={" "}
+                                                >
+                                                    N/A
+                                            </SelectItem>
                                         </SelectContent>
                                     </Select>
 
