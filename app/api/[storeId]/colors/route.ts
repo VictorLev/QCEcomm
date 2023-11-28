@@ -72,14 +72,12 @@ export async function GET(
             return new NextResponse("Store Id is required", { status: 400})
         }
 
-
-
-        const color =  await prismadb.color.findMany( {
+        const colorWna =  await prismadb.color.findMany( {
             where: {
                 storeId: params.storeId
             }
         })
-
+        const color = colorWna.filter((x) => x.name!='N/A');
         return NextResponse.json(color);
 
     } catch (error) {

@@ -72,14 +72,12 @@ export async function GET(
             return new NextResponse("Store Id is required", { status: 400})
         }
 
-
-
-        const size =  await prismadb.size.findMany( {
+        const sizeWna =  await prismadb.size.findMany( {
             where: {
                 storeId: params.storeId
             }
         })
-
+        const size = sizeWna.filter((x) => x.name!='N/A');
         return NextResponse.json(size);
 
     } catch (error) {
