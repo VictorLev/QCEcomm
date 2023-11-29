@@ -23,6 +23,10 @@ export async function PATCH (
             sizeId,
             images,
             colorId,
+            provinceId,
+            typeId,
+            sportsteamId,
+            cdayId,
             isFeatured,
             isArchived
         } = body;
@@ -86,6 +90,10 @@ export async function PATCH (
                 categoryId,
                 colorId,
                 sizeId,
+                provinceId,
+                typeId,
+                sportsteamId,
+                cdayId,
                 images: {
                     deleteMany: {}
                 },
@@ -190,7 +198,11 @@ export async function GET (
                 images: true,
                 category: true,
                 size: true,
-                color: true
+                color: true,
+                province: true,
+                cday: true,
+                sportsteam: true,
+                type: true
             }
         });
         return NextResponse.json(product)

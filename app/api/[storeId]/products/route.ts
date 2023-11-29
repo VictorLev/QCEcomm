@@ -24,6 +24,10 @@ export async function POST(
             sizeId,
             images,
             colorId,
+            provinceId,
+            typeId,
+            sportsteamId,
+            cdayId,
             isFeatured,
             isArchived
         } = body;
@@ -104,6 +108,10 @@ export async function POST(
                 categoryId,
                 colorId,
                 sizeId,
+                provinceId,
+                typeId,
+                sportsteamId,
+                cdayId,
                 storeId : params.storeId,
                 images: {
                     createMany: {
@@ -133,6 +141,11 @@ export async function GET(
         const categoryId = searchParams.get('categoryId') || undefined;
         const colorId = searchParams.get('colorId') || undefined;
         const sizeId = searchParams.get('sizeId') || undefined;
+        const provinceId = searchParams.get('provinceId') || undefined;
+        const typeId = searchParams.get('typeId') || undefined;
+        const sportsteamId = searchParams.get('sportsteamId') || undefined;
+        const cdayId = searchParams.get('cdayId') || undefined;
+
         const isFeatured = searchParams.get('isFeatured');
     
 
@@ -148,6 +161,10 @@ export async function GET(
                 categoryId,
                 colorId,
                 sizeId,
+                provinceId,
+                typeId,
+                sportsteamId,
+                cdayId,
                 isFeatured: isFeatured? true : undefined,
                 isArchived: false
             },

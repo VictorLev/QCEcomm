@@ -20,6 +20,10 @@ model Store {
   sizes      Size[] @relation("StoreToSize")
   colors     Color[] @relation("StoreToColor")
   products   Product[] @relation("StoreToProduct")
+  provinces  Province[] @relation("StoreToProvince")
+  type       Type[] @relation("StoreToType")
+  sportsteams         Sportsteam[] @relation("StoreToSportsteam")
+  cdays               Cday[] @relation("StoreTocday")
   orders     Order[] @relation("StoreToOrder")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -105,6 +109,69 @@ model Color {
 
 }
 
+model Province {
+  id String @id @default(uuid())
+  storeId String
+  store Store @relation("StoreToProvince", fields: [storeId], references: [id])
+  products Product[]
+  name String
+  value String
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([storeId])
+
+
+}
+
+model Type {
+  id String @id @default(uuid())
+  storeId String
+  store Store @relation("StoreToType", fields: [storeId], references: [id])
+  products Product[]
+  name String
+  value String
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([storeId])
+
+}
+
+model Sportsteam {
+  id String @id @default(uuid())
+  storeId String
+  store Store @relation("StoreToSportsteam", fields: [storeId], references: [id])
+  products Product[]
+  name String
+  value String
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([storeId])
+
+
+}
+
+model Cday {
+  id String @id @default(uuid())
+  storeId String
+  store Store @relation("StoreTocday", fields: [storeId], references: [id])
+  products Product[]
+  name String
+  value String
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([storeId])
+
+}
+
+
 model Product {
   id String @id @default(uuid())
   storeId String
@@ -130,6 +197,15 @@ model Product {
   colorId String
   color Color @relation(fields: [colorId], references: [id])
 
+  provinceId String
+  province Province @relation(fields: [provinceId], references: [id])
+  typeId String
+  type Type @relation(fields: [typeId], references: [id])
+  sportsteamId String
+  sportsteam Sportsteam @relation(fields: [sportsteamId], references: [id])
+  cdayId String
+  cday Cday @relation(fields: [cdayId], references: [id])
+
   images ProductImage[]
   orderItems OrderItem[]
   
@@ -140,6 +216,10 @@ model Product {
   @@index([categoryId])
   @@index([sizeId])
   @@index([colorId])
+  @@index([provinceId])
+  @@index([typeId])
+  @@index([sportsteamId])
+  @@index([cdayId])
 
 }
 

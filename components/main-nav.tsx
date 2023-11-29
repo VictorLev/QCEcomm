@@ -28,6 +28,26 @@ export function MainNav({
             active: pathname === `/${params.storeId}/categories`,
         },
         {
+            href: `/${params.storeId}/provinces`,
+            label:'Provinces',
+            active: pathname === `/${params.storeId}/provinces`,
+        },
+        {
+            href: `/${params.storeId}/types`,
+            label:'Types',
+            active: pathname === `/${params.storeId}/types`,
+        },
+        {
+            href: `/${params.storeId}/sportsteams`,
+            label:'Sports team',
+            active: pathname === `/${params.storeId}/sportsteams`,
+        },
+        {
+            href: `/${params.storeId}/cdays`,
+            label:'Celebration day',
+            active: pathname === `/${params.storeId}/cdays`,
+        },
+        {
             href: `/${params.storeId}/sizes`,
             label:'Sizes',
             active: pathname === `/${params.storeId}/sizes`,

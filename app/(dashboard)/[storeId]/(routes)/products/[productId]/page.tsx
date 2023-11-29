@@ -33,6 +33,30 @@ const ProductPage = async ({
         }
     })
 
+    const types = await prismadb.type.findMany({
+        where: {
+            storeId : params.storeId,
+        }
+    })
+
+    const provinces = await prismadb.province.findMany({
+        where: {
+            storeId : params.storeId,
+        }
+    })
+
+    const sportsteams = await prismadb.sportsteam.findMany({
+        where: {
+            storeId : params.storeId,
+        }
+    })
+
+    const cdays = await prismadb.cday.findMany({
+        where: {
+            storeId : params.storeId,
+        }
+    })
+
     return ( 
         <div className="flex-col">
             <div className="flex-1 space-y-4 p-8 pt-6">
@@ -41,6 +65,10 @@ const ProductPage = async ({
                     categories={categories}
                     colors={colors}
                     sizes={sizes}
+                    provinces={provinces}
+                    types={types}
+                    sportsteams={sportsteams}
+                    cdays={cdays}
                 />
             </div>
         </div>

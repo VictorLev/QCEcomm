@@ -1,7 +1,7 @@
 "use client"
 
 import * as z from "zod"
-import { Category, Color, ProductImage, Product, Size } from "@prisma/client";
+import { Category, Color, ProductImage, Product, Size, Province, Type as TypesType, Cday, Sportsteam } from "@prisma/client";
 import { Heading } from "@/components/ui/heading"
 import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
@@ -27,6 +27,10 @@ interface ProductFormProps {
     categories: Category[]
     sizes: Size[]
     colors: Color[]
+    provinces: Province[]
+    types: TypesType[]
+    cdays: Cday[]
+    sportsteams: Sportsteam[]
 }
 
 const formSchema = z.object({
@@ -41,6 +45,10 @@ const formSchema = z.object({
     categoryId : z.string().min(1),
     colorId: z.string().min(1),
     sizeId: z.string().min(1),
+    sportsteamId: z.string().min(1),
+    cdayId: z.string().min(1),
+    typeId: z.string().min(1),
+    provinceId: z.string().min(1),
     isFeatured: z.boolean().default(false).optional(),
     isArchived: z.boolean().default(false).optional(),
 })
@@ -51,7 +59,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     initialData,
     categories,
     colors,
-    sizes
+    sizes,
+    provinces,
+    types,
+    cdays,
+    sportsteams
 }) => {
     const params = useParams()
     const router = useRouter()
@@ -82,6 +94,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             categoryId : '',
             colorId: '',
             sizeId: '',
+            sportsteamId: '',
+            cdayId: '',
+            typeId: '',
+            provinceId: '',
             isFeatured: false,
             isArchived: false
         }
@@ -335,6 +351,154 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                                                     value={size.id}
                                                 >
                                                     {size.name}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField 
+                            control={form.control}
+                            name="provinceId"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>Province</FormLabel>
+                                    <Select 
+                                        disabled={loading}
+                                        onValueChange={field.onChange} 
+                                        value={field.value} 
+                                        defaultValue={field.value}
+                                    >
+                                        <FormControl>
+                                            <SelectTrigger >
+                                                <SelectValue 
+                                                    defaultValue={field.value} 
+                                                    placeholder="Select a Province" 
+                                                />
+
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {provinces.map((province) => (
+                                                <SelectItem
+                                                    key={province.id}
+                                                    value={province.id}
+                                                >
+                                                    {province.name}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField 
+                            control={form.control}
+                            name="typeId"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>Type</FormLabel>
+                                    <Select 
+                                        disabled={loading}
+                                        onValueChange={field.onChange} 
+                                        value={field.value} 
+                                        defaultValue={field.value}
+                                    >
+                                        <FormControl>
+                                            <SelectTrigger >
+                                                <SelectValue 
+                                                    defaultValue={field.value} 
+                                                    placeholder="Select a Type" 
+                                                />
+
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {types.map((type) => (
+                                                <SelectItem
+                                                    key={type.id}
+                                                    value={type.id}
+                                                >
+                                                    {type.name}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField 
+                            control={form.control}
+                            name="sportsteamId"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>Sportsteam</FormLabel>
+                                    <Select 
+                                        disabled={loading}
+                                        onValueChange={field.onChange} 
+                                        value={field.value} 
+                                        defaultValue={field.value}
+                                    >
+                                        <FormControl>
+                                            <SelectTrigger >
+                                                <SelectValue 
+                                                    defaultValue={field.value} 
+                                                    placeholder="Select a sportsteam" 
+                                                />
+
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {sportsteams.map((sportsteam) => (
+                                                <SelectItem
+                                                    key={sportsteam.id}
+                                                    value={sportsteam.id}
+                                                >
+                                                    {sportsteam.name}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField 
+                            control={form.control}
+                            name="cdayId"
+                            render={({field}) => (
+                                <FormItem>
+                                    <FormLabel>Celebration Day</FormLabel>
+                                    <Select 
+                                        disabled={loading}
+                                        onValueChange={field.onChange} 
+                                        value={field.value} 
+                                        defaultValue={field.value}
+                                    >
+                                        <FormControl>
+                                            <SelectTrigger >
+                                                <SelectValue 
+                                                    defaultValue={field.value} 
+                                                    placeholder="Select a Celebration" 
+                                                />
+
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            {cdays.map((cday) => (
+                                                <SelectItem
+                                                    key={cday.id}
+                                                    value={cday.id}
+                                                >
+                                                    {cday.name}
                                                 </SelectItem>
                                             ))}
                                         </SelectContent>
