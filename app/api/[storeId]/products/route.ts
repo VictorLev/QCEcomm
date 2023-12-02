@@ -172,7 +172,11 @@ export async function GET(
                 images: true,
                 category: true,
                 size: true,
-                color: true
+                color: true,
+                province: true,
+                cday:true,
+                sportsteam:true,
+                type:true
             },
             orderBy: {
                 createdAt: 'desc'
