@@ -23,7 +23,7 @@ const CdaysPage = async ( {
     const formattedBCdays: CdayColumn[] = cdays.map((item) => ({
         id: item.id,
         name: item.name,
-        value: item.value,
+        value: item.valueEn,
         createAt: format(item.createdAt, "MMMM do, yyy")
     }))
 

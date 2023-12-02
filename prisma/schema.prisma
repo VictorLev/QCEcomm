@@ -84,7 +84,9 @@ model Size {
   store Store @relation("StoreToSize", fields: [storeId], references: [id])
   products Product[]
   name String
-  value String
+  valueEn String
+  valueFr String
+  valueSp String
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -115,7 +117,9 @@ model Province {
   store Store @relation("StoreToProvince", fields: [storeId], references: [id])
   products Product[]
   name String
-  value String
+  valueEn String
+  valueFr String
+  valueSp String
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -131,7 +135,9 @@ model Type {
   store Store @relation("StoreToType", fields: [storeId], references: [id])
   products Product[]
   name String
-  value String
+  valueEn String
+  valueFr String
+  valueSp String
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -146,7 +152,9 @@ model Sportsteam {
   store Store @relation("StoreToSportsteam", fields: [storeId], references: [id])
   products Product[]
   name String
-  value String
+  valueEn String
+  valueFr String
+  valueSp String
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -162,7 +170,9 @@ model Cday {
   store Store @relation("StoreTocday", fields: [storeId], references: [id])
   products Product[]
   name String
-  value String
+  valueEn String
+  valueFr String
+  valueSp String
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -11,7 +11,7 @@ export async function POST(
         const { userId } = auth();
         const body = await req.json();
         
-        const { name,value } = body;
+        const { name, valueEn, valueFr, valueSp } = body;
 
 
 
@@ -23,7 +23,7 @@ export async function POST(
             return new NextResponse("name is required", { status: 400})
         }
 
-        if (!value) {
+        if (!valueEn) {
             return new NextResponse("value is required", { status: 400})
         }
 
@@ -46,7 +46,9 @@ export async function POST(
         const size =  await prismadb.size.create( {
             data: {
                 name,
-                value,
+                valueEn, 
+                valueFr, 
+                valueSp,
                 storeId : params.storeId
 
             }

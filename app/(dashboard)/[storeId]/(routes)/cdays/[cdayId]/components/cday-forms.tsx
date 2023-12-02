@@ -23,7 +23,9 @@ interface CdayFormProps {
 
 const formSchema = z.object({
     name :  z.string().min(1),
-    value :  z.string().min(1)
+    valueEn :  z.string().min(1),
+    valueFr :  z.string().min(1),
+    valueSp :  z.string().min(1)
 })
 
 type CdayFormValues = z.infer<typeof formSchema>
@@ -47,7 +49,9 @@ export const CdayForm: React.FC<CdayFormProps> = ({
         resolver: zodResolver(formSchema),
         defaultValues: initialData || {
             name : '',
-            value : ''
+            valueEn :  '',
+            valueFr :  '',
+            valueSp :  ''
         }
     })
 
@@ -126,19 +130,47 @@ export const CdayForm: React.FC<CdayFormProps> = ({
                                 </FormItem>
                             )}
                         />
-                        <FormField 
-                            control={form.control}
-                            name="value"
-                            render={({field}) => (
-                                <FormItem>
-                                    <FormLabel>Value</FormLabel>
-                                    <FormControl>
-                                        <Input disabled={loading} placeholder="Cday value" {...field}/>
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
+                         <div className="grid grid-rows-3 gap-4">
+                            <FormField 
+                                control={form.control}
+                                name="valueEn"
+                                render={({field}) => (
+                                    <FormItem>
+                                        <FormLabel>Value in English</FormLabel>
+                                        <FormControl>
+                                            <Input disabled={loading} placeholder="Celebration value" {...field}/>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField 
+                                control={form.control}
+                                name="valueFr"
+                                render={({field}) => (
+                                    <FormItem>
+                                        <FormLabel>Value in French</FormLabel>
+                                        <FormControl>
+                                            <Input disabled={loading} placeholder="Celebration value" {...field}/>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField 
+                                control={form.control}
+                                name="valueSp"
+                                render={({field}) => (
+                                    <FormItem>
+                                        <FormLabel>Value in Spanish</FormLabel>
+                                        <FormControl>
+                                            <Input disabled={loading} placeholder="Celebration value" {...field}/>
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
                     </div>
 
                     <Button disabled={loading} className="ml-auto" type="submit">

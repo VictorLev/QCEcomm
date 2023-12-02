@@ -23,7 +23,7 @@ const SportsteamsPage = async ( {
     const formattedBSportsteams: SportsteamColumn[] = sportsteams.map((item) => ({
         id: item.id,
         name: item.name,
-        value: item.value,
+        value: item.valueEn,
         createAt: format(item.createdAt, "MMMM do, yyy")
     }))
 
