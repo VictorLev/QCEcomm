@@ -10,7 +10,7 @@ export async function POST(
     try {
         const { userId } = auth();
         const body = await req.json();
-        
+
         const { nameEn,nameFr,nameSp, billboardId } = body;
 
 
@@ -73,8 +73,8 @@ export async function GET(
     { params } : { params: { storeId : string } }
 ) {
     try {
-        
-    
+
+
 
         if (!params.storeId) {
             return new NextResponse("Store Id is required", { status: 400})
@@ -85,7 +85,14 @@ export async function GET(
         const categories =  await prismadb.category.findMany( {
             where: {
                 storeId: params.storeId
-            }
+            },
+            include: {
+              billboard: {
+                  include: {
+                      images: true
+                  }
+              }
+          }
         })
 
         return NextResponse.json(categories);
