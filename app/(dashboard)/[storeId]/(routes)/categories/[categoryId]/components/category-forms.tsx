@@ -40,13 +40,13 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
 
     const [open, setOpen] =  useState(false);
     const [loading, setLoading] = useState(false);
-    
+
     const title =  initialData ? "Edit category" : "Create category"
     const description =  initialData ? "Edit a category" : "Add a new category"
     const toastMessage =  initialData ? "category updated" : "category created"
     const action =  initialData ? "Save Changes" : " Create"
 
-    
+
     const form = useForm<CategoryFormValues>({
         resolver: zodResolver(formSchema),
         defaultValues: initialData || {
@@ -60,7 +60,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
     const onSubmit = async (data: CategoryFormValues) => {
         try {
             setLoading(true);
-            if (initialData) { 
+            if (initialData) {
                 await axios.patch(`/api/${params.storeId}/categories/${params.categoryId}`, data)
             } else {
                 await axios.post(`/api/${params.storeId}/categories`, data)
@@ -93,14 +93,14 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
 
     return (
         <>
-            <AlertModal 
+            <AlertModal
                 isOpen={open}
                 onClose={()=> setOpen(false)}
                 onConfirm={onDelete}
                 loading={loading}
             />
             <div className="flex items-center justify-between">
-                <Heading 
+                <Heading
                     title={title}
                     description={description}
                 />
@@ -117,9 +117,9 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
             </div>
             <Separator />
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full"> 
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
                     <div className="grid grid-cols-3 gap-8">
-                        <FormField 
+                        <FormField
                             control={form.control}
                             name="nameEn"
                             render={({field}) => (
@@ -132,7 +132,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                                 </FormItem>
                             )}
                         />
-                        <FormField 
+                        <FormField
                             control={form.control}
                             name="nameFr"
                             render={({field}) => (
@@ -145,7 +145,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                                 </FormItem>
                             )}
                         />
-                        <FormField 
+                        <FormField
                             control={form.control}
                             name="nameSp"
                             render={({field}) => (
@@ -160,23 +160,23 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                         />
                     </div>
                     <div className="grid grid-cols-3 gap-8">
-                    <FormField 
+                    <FormField
                             control={form.control}
                             name="billboardId"
                             render={({field}) => (
                                 <FormItem>
                                     <FormLabel>Billboard</FormLabel>
-                                    <Select 
+                                    <Select
                                         disabled={loading}
-                                        onValueChange={field.onChange} 
-                                        value={field.value} 
+                                        onValueChange={field.onChange}
+                                        value={field.value}
                                         defaultValue={field.value}
                                     >
                                         <FormControl>
                                             <SelectTrigger >
-                                                <SelectValue 
-                                                    defaultValue={field.value} 
-                                                    placeholder="Select a Billboard/" 
+                                                <SelectValue
+                                                    defaultValue={field.value}
+                                                    placeholder="Select a Billboard/"
                                                 />
 
                                             </SelectTrigger>
@@ -199,7 +199,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
                         />
 
                     </div>
- 
+
                     <Button disabled={loading} className="ml-auto" type="submit">
                         {action}
                     </Button>
