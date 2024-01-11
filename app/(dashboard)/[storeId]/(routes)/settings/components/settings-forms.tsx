@@ -75,17 +75,18 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
 
     return (
         <>
-            <AlertModal 
+            <AlertModal
                 isOpen={open}
                 onClose={()=> setOpen(false)}
                 onConfirm={onDelete}
                 loading={loading}
             />
             <div className="flex items-center justify-between">
-                <Heading 
+                <Heading
                     title="Settings"
                     description="Manage store preferences"
                 />
+                {/*--
                 <Button
                     disabled={loading}
                     variant="destructive"
@@ -93,13 +94,13 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                     onClick={() => setOpen(true) }
                 >
                     <Trash className="h-4 w-4"/>
-                </Button>
+                </Button> --*/}
             </div>
             <Separator />
             <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full"> 
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
                     <div className="grid grid-cols-3 gap-8">
-                        <FormField 
+                        <FormField
                             control={form.control}
                             name="name"
                             render={({field}) => (
@@ -120,9 +121,9 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({
                 </form>
             </Form>
             <Separator />
-            <ApiAlert 
-                title="NEXT_PUBLIC_API_URL"  
-                description={`${origin}/api/${params.storeId}`} 
+            <ApiAlert
+                title="NEXT_PUBLIC_API_URL"
+                description={`${origin}/api/${params.storeId}`}
                 variant="public"/>
         </>
     )

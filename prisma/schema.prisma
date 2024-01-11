@@ -34,7 +34,7 @@ model Billboard {
   storeId   String
   store     Store @relation("StoreToBillboard", fields: [storeId], references: [id])
   label     String
-  images     BillboardImage[]
+  images    BillboardImage[]
   categories Category[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -44,7 +44,7 @@ model Billboard {
 
 model BillboardImage {
   id String @id @default(uuid())
-  
+
   billboardId String
   billboard Billboard @relation(fields:[billboardId], references: [id], onDelete: Cascade)
 
@@ -61,10 +61,10 @@ model Category {
   id String @id @default(uuid())
   storeId String
   store Store @relation("StoreToCategory", fields: [storeId], references: [id])
-  
+
   billboardId String
   billboard Billboard @relation(fields:[billboardId], references: [id])
-  
+
   products   Product[] @relation("CategoryToProduct")
 
   nameEn String
@@ -87,7 +87,7 @@ model Size {
   valueEn String
   valueFr String
   valueSp String
-  
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -103,7 +103,7 @@ model Color {
   products Product[]
   name String
   value String
-  
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -120,7 +120,7 @@ model Province {
   valueEn String
   valueFr String
   valueSp String
-  
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -138,7 +138,7 @@ model Type {
   valueEn String
   valueFr String
   valueSp String
-  
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -155,7 +155,7 @@ model Sportsteam {
   valueEn String
   valueFr String
   valueSp String
-  
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -173,7 +173,7 @@ model Cday {
   valueEn String
   valueFr String
   valueSp String
-  
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -203,7 +203,7 @@ model Product {
   isArchived Boolean @default(false)
   sizeId String
   size Size @relation(fields: [sizeId], references: [id])
-  
+
   colorId String
   color Color @relation(fields: [colorId], references: [id])
 
@@ -218,7 +218,7 @@ model Product {
 
   images ProductImage[]
   orderItems OrderItem[]
-  
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
